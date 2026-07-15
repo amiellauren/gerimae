@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Gerimae</title>
+<!-- PLACEHOLDER: put your logo/icon image in the pictures/ folder and it'll show as the browser tab icon -->
+<link rel="icon" type="image/png" href="pictures/hellokitty.png">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Nunito:wght@400;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="anniv.css">
+</head>
+<body>
+
+<!-- Floating hearts animation layer -->
+<div class="hearts-bg" id="heartsBg"></div>
+
+<!-- Page 1: password gate -->
+<div class="page" id="page1">
+  <div class="card">
+    <span class="corner-heart tl">💕</span>
+    <span class="corner-heart tr">🌸</span>
+    <span class="corner-heart bl">🌸</span>
+    <span class="corner-heart br">💕</span>
+    <h1 class="title">Happy Anniversary<br>and Birthday<br>Gerimae!</h1>
+    <p class="subtitle">Enter the password for your surprise!</p>
+    <p class="pw-hint">Hint: it's our anniversary date (MMDDYY)</p>
+    <div class="input-wrap">
+      <input type="password" id="passwordInput" placeholder="MMDDYY" maxlength="6" inputmode="numeric" pattern="[0-9]*"
+             oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6)"
+             onkeydown="if(event.key==='Enter') checkPassword()" />
+    </div>
+    <p class="error-msg" id="errorMsg"></p>
+    <button class="btn-unlock" onclick="checkPassword()">unlock</button>
+  </div>
+</div>
+
+<!-- Page 2: surprise selection menu -->
+<div class="page hidden" id="page2">
+  <div class="card">
+    <span class="corner-heart tl">💕</span>
+    <span class="corner-heart tr">🌸</span>
+    <span class="corner-heart bl">🌸</span>
+    <span class="corner-heart br">💕</span>
+    <h2 class="page2-title">PICK YOUR SURPRISE!</h2>
+    <div class="surprises-grid">
+      <button class="surprise-btn" onclick="goTo('page3')">
+        <span class="surprise-icon">💌</span>
+        <span class="surprise-label">Love Letter</span>
+      </button>
+      <button class="surprise-btn" onclick="goTo('page4')">
+        <span class="surprise-icon">📸</span>
+        <span class="surprise-label">Pictures</span>
+      </button>
+      <button class="surprise-btn" onclick="goTo('page5')">
+        <span class="surprise-icon">🌸</span>
+        <span class="surprise-label">Flower</span>
+      </button>
+      <button class="surprise-btn" onclick="goTo('page6')">
+        <span class="surprise-icon">🎂</span>
+        <span class="surprise-label">Birthday Letter</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Page 3: anniversary letter -->
+<div class="page hidden" id="page3">
+  <div class="card card-photo-bg card-big" id="letterCard">
+    <button class="back-btn" onclick="goTo('page2')">← back</button>
+    <h2 class="page-title">For Our First Year Together</h2>
+    <div class="letter-box">
+      <!-- Edit placeholder text below to write the letter -->
+      <textarea readonly>Happy Anniversary, Gerimae!&#10;&#10;One year has passed na tayong dalawa lang yung magkasama. We had a lot of arguments, problems, misunderstandings, and kung ano-ano pa. We aren't perfect, and most of the time, I don't really think na compatible tayo sa isa't isa. Pero I'm not someone na naniniwala sa ganon. It got to a point na maraming beses tayong muntik nang maghiwalay. We have a lot of traits and personalities that don't fit well with one another. Pero despite those things, I still love you. I will always choose you no matter what because you are the only reason why I want to become a better person, to have goals that I want for the future, and not just wait for things to happen.&#10;&#10;Today reminds me of how grateful I am na we took the risk. Looking back sa lahat ng pinagdaanan natin, yung mga masasayang moments, yung mga challenges na nalagpasan natin, at yung mga memories na nagawa natin together. I realized kung gaano ka na naging importanteng part ng buhay ko. Thank you for your love, patience, understanding, at sa pagtitiwala palagi saten. I will always cherish yung mga tawanan natin, yung mga conversations natin, at kahit yung mga tahimik na moments na magkasama lang tayo. I want you to know that my love for you continues to grow. I look forward in creating more memories together and sa future natin na sana puno ng pagmamahal. Thank you for being my partner, my best friend, and the person I want to share my life with.&#10;&#10;Happy Anniversary, Gerimae. I love you.&#10;&#10;Amiel
+</textarea>
+    </div>
+
+    <!-- PLACEHOLDER: add your stickers here, position each with its own CSS class -->
+    <img src="pictures/snoopy2.png" class="page-sticker" style="width:56px; bottom:-14px; left:-14px;" alt="" onerror="this.style.display='none'">
+  </div>
+</div>
+
+<!-- Page 4: photo gallery with hover-to-enlarge + click-to-popup caption -->
+<div class="page hidden" id="page4">
+  <div class="card card-photo-bg card-wide" id="picturesCard">
+    <button class="back-btn" onclick="goTo('page2')">← back</button>
+    <h2 class="page-title">One Year of Choosing You</h2>
+    <div class="board">
+      <!-- Photo grid, built by JS from the `photos` array in script.js -->
+      <div class="photo-grid" id="photoGrid"></div>
+    </div>
+
+    <!-- PLACEHOLDER: add your stickers here, position each with its own CSS class -->
+    <img src="pictures/sticker3.png" class="page-sticker" style="width:60px; top:50px; right:14px;" alt="" onerror="this.style.display='none'">
+    <img src="pictures/sticker2.png" class="page-sticker" style="width:44px; top:60px; left:18px;" alt="" onerror="this.style.display='none'">
+    <img src="pictures/sticker1.png" class="page-sticker" style="width:50px; bottom:18px; left:14px;" alt="" onerror="this.style.display='none'">
+    <img src="pictures/snoopy3.png" class="page-sticker" style="width:100px; bottom:10px; right:6px;" alt="" onerror="this.style.display='none'">
+  </div>
+</div>
+
+<!-- Photo popup: shows the clicked photo bigger + its caption -->
+<div class="photo-modal hidden" id="photoModal" onclick="if(event.target===this) closePhotoModal()">
+  <div class="photo-modal-box">
+    <button class="photo-modal-close" onclick="closePhotoModal()">×</button>
+    <img id="photoModalImg" src="" alt="">
+    <video id="photoModalVideo" controls style="display:none;"></video>
+    <p id="photoModalCaption"></p>
+  </div>
+</div>
+
+<!-- Page 5: flower message -->
+<div class="page hidden" id="page5">
+  <div class="card card-photo-bg card-wide" id="flowerCard">
+    <button class="back-btn" onclick="goTo('page2')">← back</button>
+    <h2 class="page-title">A Flower That Reminded Me of You</h2>
+    <div class="flower-layout">
+      <!-- Bouquet image sits on the side of the message -->
+      <img src="pictures/flower.png" class="flower-bouquet-img" alt="A bouquet of pink flowers" onerror="this.style.display='none'">
+      <div class="flower-text-box">
+        <!-- Edit placeholder text below to write the flower message -->
+        <textarea readonly>Since di pa ko nakakabili ng flowers na may snoopy, ganto nalang muna. I love you!</textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page 6: birthday message + candle wish moment -->
+<div class="page hidden" id="page6">
+  <div class="card card-big">
+    <button class="back-btn" onclick="goTo('page2')">← back</button>
+    <h2 class="page-title">For Your Special Day</h2>
+    <div class="birthday-layout">
+
+      <!-- The cake now lives inside the SAME scrollable box as the letter, right after the
+           text, at the bottom — so scrolling down through the letter reveals it -->
+      <div class="flower-text-box">
+        <div class="birthday-scroll-box" id="birthdayScrollBox">
+          <!-- Edit placeholder text below to write the birthday message -->
+          <div class="birthday-message">
+            <p>Happy Birthday, Gerimae!</p>
+            <p>Sana yung birthday mo will be a reminder of how much you are loved and appreciated, not only by me. I wish you a healthy year ahead, a year full of happiness, opportunities, joyful memories, and accomplishments. I hope you continue growing to a better version of yourself, sana maabot mo lahat ng goals mo this year at sana masaya ka while doing so. Also, may you have enough reasons to smile, laugh, and enjoy every moment of life.</p>
+            <p>Kahit ano man mangyare this year, be assured that I will always be there cheering up for you and celebrating everything kasama ka. Our life together might not be easy but I want you to know that whatever happens, I am choosing to be with you all the time. Thank you for being yourself. Thank you for your love and patience and for always believing in us. I consider myself very lucky to have you in my life.</p>
+            <p>As you begin another chapter of your life, I hope that you keep smiling and believing in yourself. Never forget how special you are. Sana marami kang matanggap na blessings, sana maraming beses kang maging happy at sana maging successful ka this year. You deserve all the best from life.</p>
+            <p>I can't really describe my love for you, but I can't wait to celebrate many more of your birthdays with you.</p>
+            <p>Amiel</p>
+          </div>
+
+          <!-- Tap the cake to blow out the candle and trigger the wish burst -->
+          <div class="candle-scene" id="candleScene" onclick="blowCandle()">
+            <div class="cake">
+              🎂
+              <span class="flame" id="flame"></span>
+            </div>
+            <p class="candle-hint" id="candleHint">tap the cake to make a wish</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER: add your stickers here, position each with its own CSS class -->
+    <img src="pictures/snoopy1.png" class="page-sticker" style="width:80px; bottom:36px; right:16px;" alt="" onerror="this.style.display='none'">
+  </div>
+</div>
+
+<script src="anniv.js"></script>
+</body>
+</html>
